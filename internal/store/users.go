@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/sikozonpc/social/internal/store"
-	"github.com/lib/pq"
+	// "github.com/go-chi/chi/v5"
+	// "github.com/brysonwaisi/go-backend/internal/store"
+	// "github.com/lib/pq"
 )
 
 // this is the model
@@ -22,10 +22,6 @@ type UsersStore struct {
 	db *sql.DB
 }
 
-func (s *UsersStore) Create(ctx context.Context) error {
-	return nil
-}
-
 func (s *UsersStore) Create(ctx context.Context, user *User) error {
 	query := `
 	INSERT INTO users (username, email, password, tags)
@@ -38,13 +34,12 @@ func (s *UsersStore) Create(ctx context.Context, user *User) error {
 		user.Username,
 		user.Email,
 		user.Password,
-		pq.Array(post.Tags),
 	).Scan (
 		&user.ID,
 		&user.CreatedAt,
 	)
 
-	if err ! nil {
+	if err != nil {
 		return err
 	}
 
