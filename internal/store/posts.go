@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/sikozonpc/social/internal/store"
+	// "github.com/go-chi/chi/v5"
+	// "github.com/brysonwaisi/go-backend/internal/store"
 	"github.com/lib/pq"
 )
 
@@ -43,7 +43,7 @@ func (s *PostsStore) Create(ctx context.Context, post *Post) error {
 		&post.UpdatedAt,
 	)
 
-	if err ! nil {
+	if err != nil {
 		return err
 	}
 
